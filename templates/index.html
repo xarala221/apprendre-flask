@@ -1,0 +1,41 @@
+{% extends 'base.html' %} 
+
+
+
+
+{% block content %}
+<div>
+
+  <h1>Accueil</h1>
+<p class="lead">Bienvenue dans votre application de gestion de taches</p>
+
+  {% if not tasks%}
+  <p>Pas de tache a faire.</p>
+  {% else %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Tache</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task in tasks %}
+      <tr>
+        <td><a href="/update/{{ task.id }}">{{ task.name }}</a></td>
+        <td>{{ task.created_at.date() }}</td>
+        <td>
+
+          <!-- <a href="#" class="btn btn-success">Terminer</a> -->
+          <a href="/delete/{{ task.id }}" class="btn btn-danger">Supprimer</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+  {% include "partials/_form.html" %}
+
+</div>
+{% endblock content %}
