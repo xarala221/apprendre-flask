@@ -14,4 +14,3 @@ Course outline
 - Modifier une tache
 - Supprimer une tache
 - Deployer sur Heroku
-
